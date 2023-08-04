@@ -53,4 +53,12 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', LogoutController::class)
         ->name('logout');
+
+    // User Profile routes
+    Route::prefix('profile')->group(function (){
+        Route::get('/',\App\Livewire\Profile\Show::class)->name('profile.index');
+        Route::get('/settings',function (){
+            return "Profile Settings";
+        })->name('profile.settings');
+    });
 });

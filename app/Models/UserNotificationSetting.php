@@ -18,4 +18,9 @@ class UserNotificationSetting extends Model
         'phone_advertisement',
         'phone_upcoming',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
