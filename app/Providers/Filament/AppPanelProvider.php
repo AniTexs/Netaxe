@@ -2,9 +2,11 @@
 
 namespace App\Providers\Filament;
 
+use App\Models\Organization;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\MenuItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -51,6 +53,17 @@ class AppPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])->brandName('Filament')
+            ->tenant(Organization::class)
+            ->tenantMenuItems([
+                MenuItem::make()
+                    ->label('Settings')
+                    ->url("/")
+                    ->icon('heroicon-m-cog-8-tooth'),
+                // ...
+            ])->userMenuItems([
+                'billing' => MenuItem::make()->label('Manage subscription'),
+                // ...
             ]);
     }
 }

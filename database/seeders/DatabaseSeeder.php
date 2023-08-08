@@ -19,5 +19,14 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
             'password' => bcrypt('password'),
         ]);
+
+        // run PermissionSeeder
+        $this->call(PermissionSeeder::class);
+        // run CurrencySeeder
+        $this->call(CurrencySeeder::class);
+        // run CountrySeeder
+        $this->call(CountrySeeder::class);
+        // run RoleSeeder
+        $this->call(RoleSeeder::class);
     }
 }

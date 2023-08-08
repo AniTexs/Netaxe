@@ -2,20 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class RoleUser extends Model
+class RoleUser extends Pivot
 {
-    use HasFactory;
-
     protected $fillable = [
         'role_id',
         'user_id',
     ];
 
     /**
-     * Get the role that owns the RoleUser.
+     * Get the role that owns the RoleUserD.
      */
     public function role()
     {
@@ -23,7 +20,7 @@ class RoleUser extends Model
     }
 
     /**
-     * Get the user that owns the RoleUser.
+     * Get the user that owns the RoleUserD.
      */
     public function user()
     {
